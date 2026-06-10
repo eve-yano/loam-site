@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LOAM — Luxury Shisha Lounge OSAKA FUKUSHIMA | 2026.08.01 GRAND OPEN</title>
+<meta name="description" content="JR福島駅徒歩1分。漆黒と金のラグジュアリーシーシャラウンジ LOAM、2026年8月1日グランドオープン。オープニングスタッフ募集中。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#070708;
+  --black2:#0e0e11;
+  --gold:#c9a96a;
+  --gold-light:#e8d5ae;
+  --white:#f4f1ea;
+  --gray:#8a8678;
+  --en:'Cormorant Garamond',serif;
+  --jp:'Noto Serif JP',serif;
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);color:var(--white);
+  font-family:var(--jp);font-weight:300;letter-spacing:.08em;line-height:2;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ===== Header ===== */
+header{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:calc(16px + env(safe-area-inset-top,0px)) 20px 16px;
+  transition:background .5s;
+}
+header.scrolled{background:rgba(7,7,8,.9);backdrop-filter:blur(10px)}
+.logo{font-family:var(--en);font-size:24px;letter-spacing:.45em;color:var(--gold-light);font-weight:400}
+.menu-btn{background:none;border:none;cursor:pointer;z-index:120;padding:6px}
+.menu-btn span{display:block;width:28px;height:1px;background:var(--gold-light);margin:8px 0;transition:.35s}
+.menu-btn.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.menu-btn.open span:nth-child(2){opacity:0}
+.menu-btn.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+nav{
+  position:fixed;inset:0;z-index:110;background:rgba(7,7,8,.96);backdrop-filter:blur(14px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  opacity:0;pointer-events:none;transition:opacity .45s;
+}
+nav.open{opacity:1;pointer-events:auto}
+nav a{
+  font-family:var(--en);font-size:30px;letter-spacing:.35em;color:var(--white);
+  padding:10px 0;text-transform:uppercase;font-weight:300;
+}
+nav a small{display:block;text-align:center;font-family:var(--jp);font-size:11px;color:var(--gray);letter-spacing:.4em}
+nav a.cta{color:var(--gold)}
+
+/* ===== Hero ===== */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;display:flex;align-items:flex-end}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75;filter:saturate(.85) brightness(.75)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,7,8,.55) 0%,rgba(7,7,8,0) 35%,rgba(7,7,8,.25) 70%,var(--black) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%;padding:0 24px calc(110px + var(--safe-b))}
+.hero-tag{
+  font-family:var(--en);font-size:12px;letter-spacing:.55em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:10px;opacity:0;animation:fadeUp 1.4s .3s forwards;
+}
+.hero h1{
+  font-family:var(--en);font-weight:300;font-style:italic;
+  font-size:clamp(96px,30vw,200px);line-height:.95;letter-spacing:.04em;
+  color:var(--white);opacity:0;animation:fadeUp 1.6s .7s forwards;
+}
+.hero h1 span{color:var(--gold-light)}
+.hero-copy{
+  margin-top:18px;font-size:clamp(15px,4.2vw,19px);letter-spacing:.32em;
+  color:rgba(244,241,234,.92);opacity:0;animation:fadeUp 1.6s 1.2s forwards;
+}
+.hero-meta{
+  margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;
+  opacity:0;animation:fadeUp 1.6s 1.7s forwards;
+}
+.hero-meta .open-date{
+  font-family:var(--en);font-size:15px;letter-spacing:.4em;color:var(--gold);
+  border:1px solid rgba(201,169,106,.5);padding:10px 20px;
+}
+.hero-meta .station{font-size:12px;letter-spacing:.25em;color:rgba(244,241,234,.8)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ===== Marquee ===== */
+.marquee{
+  overflow:hidden;border-top:1px solid rgba(201,169,106,.3);border-bottom:1px solid rgba(201,169,106,.3);
+  padding:14px 0;background:var(--black);position:relative;z-index:3;
+}
+.marquee-track{display:flex;width:max-content;animation:marquee 22s linear infinite}
+.marquee-track span{
+  font-family:var(--en);font-size:15px;letter-spacing:.5em;color:var(--gold);
+  text-transform:uppercase;white-space:nowrap;padding-right:48px;
+}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ===== Sections ===== */
+section{padding:96px 24px;position:relative}
+.container{max-width:1100px;margin:0 auto}
+.sec-label{font-family:var(--en);font-size:12px;letter-spacing:.55em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.sec-title{font-family:var(--en);font-weight:300;font-size:clamp(34px,9vw,56px);letter-spacing:.1em;line-height:1.25;margin-bottom:40px}
+.sec-title .jp-title{font-family:var(--jp);display:block;font-size:clamp(22px,6.4vw,34px);letter-spacing:.18em;margin-top:6px}
+.sec-title small{display:block;font-family:var(--jp);font-size:13px;letter-spacing:.35em;color:var(--gray);margin-top:14px}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 1s ease,transform 1s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* Concept */
+.concept p{margin-bottom:24px;font-size:15px;color:rgba(244,241,234,.88)}
+.concept-img{position:relative;margin-top:48px}
+.concept-img img{width:100%;height:72vw;max-height:560px;object-fit:cover;filter:saturate(.85) brightness(.9)}
+.concept-img::before{content:'';position:absolute;inset:-14px 14px 14px -14px;border:1px solid rgba(201,169,106,.4);z-index:-1}
+
+/* Gallery */
+.gallery{background:var(--black2);padding-left:0;padding-right:0}
+.gallery .head{padding:0 24px}
+.gallery-scroll{
+  display:flex;gap:12px;overflow-x:auto;padding:8px 24px 20px;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.gallery-scroll figure{
+  flex:0 0 78%;max-width:420px;scroll-snap-align:center;overflow:hidden;position:relative;
+}
+.gallery-scroll img{width:100%;height:104vw;max-height:520px;object-fit:cover;filter:saturate(.8) brightness(.85)}
+.gallery-scroll figcaption{
+  position:absolute;left:14px;bottom:12px;font-family:var(--en);font-size:11px;
+  letter-spacing:.4em;color:var(--gold-light);text-transform:uppercase;
+  text-shadow:0 1px 8px rgba(0,0,0,.8);
+}
+.swipe-hint{padding:0 24px;font-size:11px;color:var(--gray);letter-spacing:.3em;text-align:right}
+
+/* Coming soon cards */
+.soon-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.soon-card{
+  border:1px solid rgba(201,169,106,.25);background:rgba(14,14,17,.7);
+  padding:44px 28px;text-align:center;
+}
+.soon-card h3{font-family:var(--en);font-size:21px;letter-spacing:.3em;color:var(--gold-light);font-weight:400;text-transform:uppercase}
+.soon-card .jp{font-size:12px;color:var(--gray);letter-spacing:.3em;margin-top:6px}
+.soon-badge{
+  display:inline-block;margin-top:20px;font-family:var(--en);font-size:12px;
+  letter-spacing:.45em;color:var(--gold);border:1px solid rgba(201,169,106,.5);
+  padding:9px 24px;text-transform:uppercase;
+}
+.soon-card p.desc{margin-top:16px;font-size:13px;color:rgba(244,241,234,.6)}
+
+/* Info */
+.info{background:var(--black2)}
+.info-table{width:100%;border-collapse:collapse;font-size:14px}
+.info-table th,.info-table td{padding:20px 4px;border-bottom:1px solid rgba(201,169,106,.18);text-align:left;vertical-align:top}
+.info-table th{width:108px;font-weight:400;color:var(--gold);letter-spacing:.2em;font-family:var(--en);text-transform:uppercase;font-size:11px}
+.soon-inline{color:var(--gray);font-family:var(--en);letter-spacing:.3em;font-size:13px}
+.access-note{margin-top:24px;font-size:12px;color:var(--gray);letter-spacing:.15em}
+
+/* Recruit */
+.recruit{background:linear-gradient(rgba(7,7,8,.9),rgba(7,7,8,.95)),url('https://images.pexels.com/photos/3201920/pexels-photo-3201920.jpeg?auto=compress&cs=tinysrgb&w=1280') center/cover}
+.recruit-lead{margin-bottom:48px;font-size:15px;color:rgba(244,241,234,.88)}
+.recruit-form{max-width:680px}
+.form-row{margin-bottom:30px}
+.form-row label{display:block;font-family:var(--en);font-size:12px;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.form-row label .jp{font-family:var(--jp);color:var(--gray);margin-left:10px;letter-spacing:.2em}
+.req{color:var(--gold-light);margin-left:8px;font-size:11px}
+.form-row input,.form-row select,.form-row textarea{
+  width:100%;background:rgba(244,241,234,.05);border:1px solid rgba(201,169,106,.3);
+  color:var(--white);padding:16px 16px;font-family:var(--jp);font-size:16px;
+  letter-spacing:.06em;transition:border-color .3s,background .3s;border-radius:0;
+  -webkit-appearance:none;appearance:none;
+}
+.form-row select{background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+.form-row select option{background:var(--black2);color:var(--white)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--gold);background:rgba(201,169,106,.07)}
+.form-row textarea{min-height:140px;resize:vertical}
+.form-row input::placeholder,.form-row textarea::placeholder{color:rgba(138,134,120,.55)}
+.submit-btn{
+  display:block;width:100%;background:var(--gold);border:1px solid var(--gold);color:var(--black);
+  font-family:var(--en);font-size:15px;letter-spacing:.5em;text-transform:uppercase;
+  padding:19px 0 19px 8px;cursor:pointer;transition:background .4s,color .4s;
+}
+.submit-btn:active,.submit-btn:hover{background:transparent;color:var(--gold)}
+.form-note{font-size:11px;color:var(--gray);margin-bottom:28px;letter-spacing:.12em}
+.form-success{display:none;border:1px solid var(--gold);padding:44px 28px;text-align:center;max-width:680px}
+.form-success h3{font-family:var(--en);letter-spacing:.4em;color:var(--gold-light);font-weight:400;margin-bottom:16px;text-transform:uppercase}
+.form-success p{font-size:14px;color:rgba(244,241,234,.85)}
+.error-msg{display:none;color:#d98c8c;font-size:12px;letter-spacing:.12em;margin-top:6px}
+.form-row.invalid input,.form-row.invalid select{border-color:#a05656}
+.form-row.invalid .error-msg{display:block}
+
+/* Sticky mobile CTA */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;
+  background:rgba(7,7,8,.92);backdrop-filter:blur(10px);
+  border-top:1px solid rgba(201,169,106,.4);
+  padding:12px 16px calc(12px + var(--safe-b));
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  transform:translateY(110%);transition:transform .5s ease;
+}
+.sticky-cta.show{transform:none}
+.sticky-cta .txt{font-size:11px;letter-spacing:.18em;color:rgba(244,241,234,.85);line-height:1.6}
+.sticky-cta .txt b{display:block;font-family:var(--en);font-weight:400;letter-spacing:.3em;color:var(--gold);font-size:13px}
+.sticky-cta a{
+  flex-shrink:0;background:var(--gold);color:var(--black);font-size:13px;letter-spacing:.2em;
+  padding:12px 22px;font-weight:500;
+}
+
+/* Footer */
+footer{background:var(--black);padding:72px 24px calc(120px + var(--safe-b));text-align:center;border-top:1px solid rgba(201,169,106,.15)}
+footer .logo{font-size:30px;display:block;margin-bottom:14px}
+footer .open-date{font-family:var(--en);letter-spacing:.45em;color:var(--gold);font-size:12px;margin-bottom:8px}
+footer .addr{font-size:12px;color:var(--gray);letter-spacing:.2em;margin-bottom:32px}
+footer .sns{display:flex;justify-content:center;gap:26px;margin-bottom:36px}
+footer .sns a{font-family:var(--en);font-size:12px;letter-spacing:.3em;color:var(--gray);text-transform:uppercase}
+footer small{font-size:10px;color:#55524a;letter-spacing:.2em;display:block;line-height:1.8}
+.notice{font-size:10px;color:#6a6659;letter-spacing:.12em;margin-bottom:24px}
+
+/* ===== Desktop ===== */
+@media(min-width:861px){
+  section{padding:140px 24px}
+  .hero-inner{padding:0 64px 140px}
+  .hero h1{font-size:clamp(120px,16vw,220px)}
+  .soon-grid{grid-template-columns:1fr 1fr}
+  .concept-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+  .concept-img{margin-top:0}
+  .concept-img img{height:560px}
+  .gallery-scroll figure{flex:0 0 32%}
+  .gallery-scroll img{height:420px}
+  .info-table th{width:200px;font-size:12px;letter-spacing:.3em}
+  .submit-btn{width:auto;padding:18px 72px}
+  .sticky-cta{display:none}
+  footer{padding-bottom:48px}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <a class="logo" href="#">LOAM</a>
+  <button class="menu-btn" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+</header>
+<nav id="nav">
+  <a href="#concept">Concept<small>コンセプト</small></a>
+  <a href="#space">Space<small>空間</small></a>
+  <a href="#menu">Menu<small>メニュー</small></a>
+  <a href="#info">Access<small>店舗情報</small></a>
+  <a href="#recruit" class="cta">Recruit<small>スタッフ募集</small></a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <video id="heroVideo" autoplay muted loop playsinline poster="https://images.pexels.com/photos/3201920/pexels-photo-3201920.jpeg?auto=compress&cs=tinysrgb&w=1280"></video>
+  <div class="hero-inner">
+    <p class="hero-tag">Luxury Shisha Lounge — Osaka Fukushima</p>
+    <h1>LO<span>AM</span></h1>
+    <p class="hero-copy">煙に溶ける、漆黒の刻。</p>
+    <div class="hero-meta">
+      <span class="open-date">2026.08.01 GRAND OPEN</span>
+      <span class="station">JR福島駅より徒歩1分</span>
+    </div>
+  </div>
+</div>
+
+<!-- Marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>LOAM — Luxury Shisha Lounge — Osaka Fukushima — 2026.08.01 Grand Open —</span>
+    <span>LOAM — Luxury Shisha Lounge — Osaka Fukushima — 2026.08.01 Grand Open —</span>
+  </div>
+</div>
+
+<!-- Concept -->
+<section class="concept" id="concept">
+  <div class="container concept-wrap">
+    <div class="reveal">
+      <p class="sec-label">Concept</p>
+      <h2 class="sec-title">非日常の煙に、<br>酔いしれる。<small>A HIDEAWAY FOR ADULTS</small></h2>
+      <p>都会の喧騒から一歩離れた、漆黒と金の静寂。LOAM は、上質なフレーバーと洗練された空間で、貴方だけの時間を演出するラグジュアリーシーシャラウンジです。</p>
+      <p>厳選された世界のプレミアムフレーバー、熟練の専属シーシャマイスター、そして琥珀色の灯りに包まれたプライベートな空間。すべては、最高の一服のために。</p>
+      <p>JR福島駅から徒歩1分。2026年8月1日、グランドオープン。</p>
+    </div>
+    <div class="concept-img reveal">
+      <img src="https://images.pexels.com/photos/9550164/pexels-photo-9550164.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="シーシャのある上質な空間" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- Space / Gallery -->
+<section class="gallery" id="space">
+  <div class="head">
+    <p class="sec-label reveal">Space</p>
+    <h2 class="sec-title reveal">琥珀の灯りに、沈む。<small>IMMERSIVE PRIVATE SPACE</small></h2>
+  </div>
+  <div class="gallery-scroll reveal">
+    <figure><img src="https://images.pexels.com/photos/26729557/pexels-photo-26729557.jpeg?auto=compress&cs=tinysrgb&w=900" alt="ラグジュアリーなラウンジ内装" loading="lazy"><figcaption>Lounge</figcaption></figure>
+    <figure><img src="https://images.pexels.com/photos/7518765/pexels-photo-7518765.jpeg?auto=compress&cs=tinysrgb&w=900" alt="シーシャ" loading="lazy"><figcaption>Shisha</figcaption></figure>
+    <figure><img src="https://images.pexels.com/photos/8380698/pexels-photo-8380698.jpeg?auto=compress&cs=tinysrgb&w=900" alt="シーシャと煙" loading="lazy"><figcaption>Smoke</figcaption></figure>
+    <figure><img src="https://images.pexels.com/photos/10195185/pexels-photo-10195185.jpeg?auto=compress&cs=tinysrgb&w=900" alt="バーカウンター" loading="lazy"><figcaption>Bar</figcaption></figure>
+  </div>
+  <p class="swipe-hint">← SWIPE　※写真はイメージです</p>
+</section>
+
+<!-- Menu : Coming Soon -->
+<section id="menu">
+  <div class="container">
+    <p class="sec-label reveal">Menu</p>
+    <h2 class="sec-title reveal">至高の一服を、<br>まもなく。<small>FLAVOR &amp; DRINK</small></h2>
+    <div class="soon-grid">
+      <div class="soon-card reveal">
+        <h3>Shisha Flavor</h3>
+        <p class="jp">プレミアムフレーバー</p>
+        <span class="soon-badge">Coming Soon</span>
+        <p class="desc">世界各国から厳選したフレーバーラインナップを準備中。</p>
+      </div>
+      <div class="soon-card reveal">
+        <h3>Bar &amp; Drink</h3>
+        <p class="jp">シャンパン・カクテル・ノンアルコール</p>
+        <span class="soon-badge">Coming Soon</span>
+        <p class="desc">煙と寄り添う一杯を、ただいま選定中。</p>
+      </div>
+      <div class="soon-card reveal">
+        <h3>VIP Room</h3>
+        <p class="jp">完全個室・チャージ</p>
+        <span class="soon-badge">Coming Soon</span>
+        <p class="desc">プライベートを極めた個室プランを公開予定。</p>
+      </div>
+      <div class="soon-card reveal">
+        <h3>Membership</h3>
+        <p class="jp">会員制度</p>
+        <span class="soon-badge">Coming Soon</span>
+        <p class="desc">オープン記念メンバーシップの詳細は近日発表。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Info / Access -->
+<section class="info" id="info">
+  <div class="container">
+    <p class="sec-label reveal">Access</p>
+    <h2 class="sec-title reveal">店舗情報<small>SHOP INFORMATION</small></h2>
+    <table class="info-table reveal">
+      <tr><th>Shop</th><td>LOAM（ロアム）</td></tr>
+      <tr><th>Open</th><td>2026年8月1日（土）グランドオープン</td></tr>
+      <tr><th>Address</th><td>大阪府大阪市福島区福島（※詳細は近日公開）</td></tr>
+      <tr><th>Access</th><td>JR大阪環状線「福島駅」より徒歩1分</td></tr>
+      <tr><th>Hours</th><td><span class="soon-inline">Coming Soon</span></td></tr>
+      <tr><th>Tel</th><td><span class="soon-inline">Coming Soon</span></td></tr>
+      <tr><th>Seats</th><td><span class="soon-inline">Coming Soon</span>　— ソファ席・カウンター・完全個室VIPルーム</td></tr>
+    </table>
+    <p class="access-note">※阪神「福島駅」・JR東西線「新福島駅」からもアクセス可。番地・地図はオープン告知とあわせて公開予定です。</p>
+  </div>
+</section>
+
+<!-- Recruit -->
+<section class="recruit" id="recruit">
+  <div class="container">
+    <p class="sec-label reveal">Recruit</p>
+    <h2 class="sec-title reveal">オープニング<br>スタッフ募集<small>JOIN US — OPENING STAFF</small></h2>
+    <p class="recruit-lead reveal">
+      2026年8月1日のグランドオープンに向けて、共に最高の空間をつくる仲間を募集します。
+      シーシャマイスター・バーテンダー・ホールスタッフ・経験不問のアシスタントまで、幅広いポジションをご用意。
+      未経験の方も研修制度がありますので、安心してご応募ください。
+    </p>
+
+    <form class="recruit-form reveal" id="recruitForm" novalidate>
+      <div class="form-row" data-field="name">
+        <label for="f-name">Name<span class="jp">お名前</span><span class="req">※必須</span></label>
+        <input type="text" id="f-name" name="name" placeholder="山田 太郎" autocomplete="name" required>
+        <p class="error-msg">お名前を入力してください。</p>
+      </div>
+      <div class="form-row" data-field="kana">
+        <label for="f-kana">Kana<span class="jp">フリガナ</span><span class="req">※必須</span></label>
+        <input type="text" id="f-kana" name="kana" placeholder="ヤマダ タロウ" required>
+        <p class="error-msg">フリガナを入力してください。</p>
+      </div>
+      <div class="form-row" data-field="email">
+        <label for="f-email">E-mail<span class="jp">メールアドレス</span><span class="req">※必須</span></label>
+        <input type="email" id="f-email" name="email" placeholder="example@mail.com" autocomplete="email" required>
+        <p class="error-msg">正しいメールアドレスを入力してください。</p>
+      </div>
+      <div class="form-row" data-field="tel">
+        <label for="f-tel">Phone<span class="jp">電話番号</span><span class="req">※必須</span></label>
+        <input type="tel" id="f-tel" name="tel" placeholder="090-0000-0000" autocomplete="tel" required>
+        <p class="error-msg">電話番号を入力してください。</p>
+      </div>
+      <div class="form-row" data-field="position">
+        <label for="f-position">Position<span class="jp">希望職種</span><span class="req">※必須</span></label>
+        <select id="f-position" name="position" required>
+          <option value="">選択してください</option>
+          <option>シーシャマイスター（経験者）</option>
+          <option>シーシャスタッフ（未経験可）</option>
+          <option>バーテンダー</option>
+          <option>ホールスタッフ</option>
+          <option>店長・マネージャー候補</option>
+          <option>その他</option>
+        </select>
+        <p class="error-msg">希望職種を選択してください。</p>
+      </div>
+      <div class="form-row" data-field="employment">
+        <label for="f-employment">Employment<span class="jp">希望雇用形態</span></label>
+        <select id="f-employment" name="employment">
+          <option value="">選択してください（任意）</option>
+          <option>正社員</option>
+          <option>アルバイト・パート</option>
+          <option>業務委託</option>
+        </select>
+      </div>
+      <div class="form-row" data-field="message">
+        <label for="f-message">Message<span class="jp">自己PR・ご質問など</span></label>
+        <textarea id="f-message" name="message" placeholder="経験・シフト希望・ご質問などご自由にご記入ください"></textarea>
+      </div>
+      <p class="form-note">※ご入力いただいた個人情報は採用選考の目的にのみ使用いたします。<br>※20歳未満の方はご応募いただけません。</p>
+      <button type="submit" class="submit-btn">Apply</button>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <h3>Thank You</h3>
+      <p>ご応募ありがとうございます。<br>内容を確認のうえ、担当者より3営業日以内にご連絡いたします。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="logo">LOAM</span>
+  <p class="open-date">2026.08.01 GRAND OPEN</p>
+  <p class="addr">大阪府大阪市福島区福島　JR福島駅より徒歩1分</p>
+  <div class="sns">
+    <a href="#" aria-label="Instagram">Instagram</a>
+    <a href="#" aria-label="X">X</a>
+    <a href="#" aria-label="LINE">LINE</a>
+  </div>
+  <p class="notice">当店は20歳未満の方のご入店をお断りしております。<br>Photo &amp; Video by <a href="https://www.pexels.com" style="color:#8a8678">Pexels</a></p>
+  <small>&copy; 2026 LOAM. All rights reserved.</small>
+</footer>
+
+<!-- Sticky CTA (mobile) -->
+<div class="sticky-cta" id="stickyCta">
+  <p class="txt"><b>OPENING STAFF</b>オープニングスタッフ募集中</p>
+  <a href="#recruit">応募する</a>
+</div>
+
+<script>
+// ヒーロー動画：モバイルは縦動画、PCは横動画
+(()=>{
+  const v=document.getElementById('heroVideo');
+  const portrait='https://videos.pexels.com/video-files/34317043/14537841_1440_2560_60fps.mp4';
+  const landscape='https://videos.pexels.com/video-files/6894947/6894947-uhd_2560_1440_30fps.mp4';
+  v.src=matchMedia('(max-width:860px)').matches?portrait:landscape;
+})();
+
+// ヘッダーのスクロール変化
+const header=document.getElementById('header');
+addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>60),{passive:true});
+
+// メニュー
+const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('open');nav.classList.toggle('open')});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menuBtn.classList.remove('open');nav.classList.remove('open')}));
+
+// スクロールリビール
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// スティッキーCTA：ヒーローを過ぎたら表示、求人セクション内では隠す
+const cta=document.getElementById('stickyCta');
+const recruitSec=document.getElementById('recruit');
+addEventListener('scroll',()=>{
+  const past=scrollY>innerHeight*.85;
+  const r=recruitSec.getBoundingClientRect();
+  const inRecruit=r.top<innerHeight&&r.bottom>0;
+  cta.classList.toggle('show',past&&!inRecruit);
+},{passive:true});
+
+// 求人フォーム（バックエンド未接続のためフロント側バリデーション＋完了表示）
+const form=document.getElementById('recruitForm');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  let ok=true;
+  const rows={
+    name:v=>v.trim()!=='',
+    kana:v=>v.trim()!=='',
+    email:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    tel:v=>/^[\d\-+() ]{8,}$/.test(v.trim()),
+    position:v=>v!==''
+  };
+  for(const[key,test]of Object.entries(rows)){
+    const row=form.querySelector(`[data-field="${key}"]`);
+    const field=row.querySelector('input,select');
+    const valid=test(field.value);
+    row.classList.toggle('invalid',!valid);
+    if(!valid)ok=false;
+  }
+  if(!ok){
+    form.querySelector('.invalid').scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  // TODO: 送信先（メール/フォームサービス等）決定後に接続
+  form.style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+  document.getElementById('formSuccess').scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+</html>
